@@ -4,16 +4,13 @@
       <div class="ny-product-grid">
         {% for product_array in section.settings.ny_product_list %}    
              <div class="ny-box">
-                <div class="ny-image-box">
-                        <img src="{{product_array.featured_image |  image_url: 'large' }}" alt="{{product.featured_image.alt}}" width="433px" height="auto">
-               
+                <div class="ny-image-box">               
                         {% assign images = product_array.media | where: 'media_type', 'image' %}
-
-                            {% for image in images %}
+                            {% for image in images limit : 1 %}
                             {{- image | image_url: width: 433 | image_tag }}
                             {% endfor %}
                         </div>
-                <div class="ny-selection-box">{{product_array.featured_image.src |  image_url: 'large' }} - {{product.featured_image |  image_url: 'large' }}</div>
+                <div class="ny-selection-box"></div>
              </div>
         {% endfor %}    
       </div>
