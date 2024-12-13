@@ -3,11 +3,10 @@
       <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
       <div class="ny-product-grid">
         {% for product in section.settings.ny_product_list %}    
-        {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
              <div class="ny-box">
                 <div class="ny-image-box">
                     <div class="grid__item product__media-wrapper">
-                        {% render 'product-media-gallery', variant_images: variant_images %}
+                        <h1>{{product.title}}</h1>
                       </div>
                 </div>
                 <div class="ny-selection-box"></div>
