@@ -1,0 +1,60 @@
+<div class="{{section.class}}">
+    <div class="ny-container">
+      <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
+      <div class="ny-product-grid">
+        {% for product in section.settings.ny_product_list %}    
+        {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+             <div class="ny-box">
+                <div class="ny-image-box">
+                    <div class="grid__item product__media-wrapper">
+                        {% render 'product-media-gallery', variant_images: variant_images %}
+                      </div>
+                </div>
+                <div class="ny-selection-box"></div>
+             </div>
+        {% endfor %}    
+      </div>
+    </div>
+</div>
+<style>
+.ny-container{}
+.ny-title{}
+.ny-product-grid{display: grid;  column-gap: 20px; column-gap: 20px;grid:auto auto auto;}
+.ny-box{}
+.ny-image-box{}
+.ny-selection-box{}
+</style>    
+
+
+{% schema %}
+{
+  "name": "NY Product Grid",
+  "tag": "section",
+  "class": "section section-featured-product ny-container",
+  "settings": [
+    {
+    "type": "text",
+    "id": "ny_title",
+    "label": "Heading",
+    "default": "Tisso vison in the wild"
+    },
+    {
+      "type": "header",
+      "content": "Select the 6 products",
+      "info": "These products will appear in the grid"
+    },
+    {
+    "type": "product_list",
+    "id": "ny_product_list",
+    "label": "Products",
+    "limit": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "NY Product Grid"
+    }
+  ]
+}
+{% endschema %}
+
