@@ -15,9 +15,28 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "saj_page_header_tQ8ymf": {
+      "type": "saj-page-header",
+      "settings": {
+        "ny_tagline": "Find the ideal gift for your loved ones.",
+        "ny_button_label": "Button label",
+        "ny_button_link": ""
+      }
+    },
+    "saj_product_grid_RtD7Cm": {
+      "type": "saj-product-grid",
+      "settings": {
+        "ny_title": "Tisso vison in the wild",
+        "ny_product_list": [
+          "example-t-shirt"
+        ]
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "saj_page_header_tQ8ymf",
+    "saj_product_grid_RtD7Cm"
   ]
 }
