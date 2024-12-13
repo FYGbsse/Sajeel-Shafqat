@@ -5,7 +5,7 @@
         {% for product in section.settings.ny_product_list %}    
              <div class="ny-box">
                 <div class="ny-image-box">
-                        <img src="{{product.featured_image.src }}" alt="{{product.featured_image.alt}}"/>
+                        <img src="{{product.featured_image |  image_url: 'master' }}" alt="{{product.featured_image.alt}}" width="433px" height="auto">
                 </div>
                 <div class="ny-selection-box"></div>
              </div>
@@ -31,7 +31,7 @@ padding-left: 51.5px;}
 {
   "name": "NY Product Grid",
   "tag": "section",
-  "class": "section section-featured-product ny-container",
+  "class": "section section-featured-product ny-container-wapper",
   "settings": [
     {
     "type": "text",
