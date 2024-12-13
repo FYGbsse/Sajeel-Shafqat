@@ -19,6 +19,7 @@
     "saj_page_header_tQ8ymf": {
       "type": "saj-page-header",
       "settings": {
+        "ny_logo": "shopify://shop_images/logo-ny.png",
         "ny_tagline": "Find the ideal gift for your loved ones.",
         "ny_button_label": "Button label",
         "ny_button_link": ""
