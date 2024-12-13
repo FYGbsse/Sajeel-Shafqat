@@ -5,9 +5,9 @@
         {% for product in section.settings.ny_product_list %}    
              <div class="ny-box">
                 <div class="ny-image-box">
-                        <img src="{{product.featured_image |  image_url: 'large' }}" alt="{{product.featured_image.alt}}" width="433px" height="auto">
+                        <img src="{{product.featured_image.src |  image_url: 'large' }}" alt="{{product.featured_image.alt}}" width="433px" height="auto">
                 </div>
-                <div class="ny-selection-box"></div>
+                <div class="ny-selection-box">{{product.featured_image.src |  image_url: 'large' }} - {{product.featured_image |  image_url: 'large' }}</div>
              </div>
         {% endfor %}    
       </div>
