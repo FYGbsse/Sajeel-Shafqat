@@ -10,12 +10,71 @@
                             {{- image | image_url: width: 433 | image_tag }}
                             {% endfor %}
                         </div>
-                <div class="ny-selection-box"></div>
+                <div class="ny-selection-box">
+
+
+
+                    <div class="ny-popup-grid">
+                      <div class="ny-popup-top">
+                        <div class="ny-popup-image">
+                            <p>{{product.selected_or_first_available_variant.image }}</p>
+                        </div>
+                        <div class="ny-popup-content">
+                            <h2>{{product.title}}</h2>
+                            <p>{{product.selected_or_first_available_variant.price }}</p>
+                            <p>{{product.description}}</p>
+                        </div>
+                      </div>
+                        <div class="ny-popup-form">
+                        {% form '', product %}
+
+
+                          {% if product.variants.size > 1 %}
+                            <div class="main-product-options">
+                              {% for option in product.options_with_values %}
+                                <fieldset class="main-product-option">
+                                  <legend>{{ option.name }}</legend>
+                                  <div class="main-product-option-radios">
+                                    {% for value in option.values %}
+                                      <div class="main-product-option-radio">
+                                        <input
+                                          {% if option.selected_value == value %}
+                                            checked
+                                          {% endif %}
+                                          type="radio"
+                                          name="{{ option.name }}"
+                                          value="{{ value }}"
+                                          class="product-option-select"
+                                          id="{{ option.name | handlize }}-{{ value | handlize }}"
+                                        >
+                                        <label for="{{ option.name | handlize }}-{{ value | handlize }}">
+                                          {{ value }}
+                                        </label>
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </fieldset>
+                              {% endfor %}
+                            </div>
+                          {% endif %}
+                           
+                          <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                          <input type="text" name="quantity" min="1" value="1">
+                          <input type="submit" name="Add to Cart" id="addToCart" >
+                        {% endform %}
+                    
+                      </div>
+                    </div>
+
+
+
+                </div>
              </div>
         {% endfor %}    
       </div>
     </div>
 </div>
+
 <style>
 .ny-container{ max-width: 1337px; margin:auto;}
 .ny-title{}
@@ -35,7 +94,105 @@
 }
 </style>    
 
+<script>
+  // Root container for the product grid
+  var root = document.querySelector('#product-grid-{{ section.id }}');
 
+// Loop through each product box
+root.querySelectorAll('.ny-box').forEach(productBox => {
+  // Parse the product JSON
+  let productData = null;
+
+  try {
+    productData = JSON.parse(productBox.dataset.product);
+  } catch (error) {
+    console.error('Invalid JSON in data-product:', productBox.dataset.product, error);
+    return; // Skip this product box
+  }
+
+
+  // Add event listener for radio buttons within the current product box
+  productBox.querySelectorAll('.main-product-option input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      // Collect selected options within the current product box
+      let selectedOptions = [];
+      productBox.querySelectorAll('.main-product-option input[type="radio"]:checked').forEach(radio => {
+        selectedOptions.push(radio.value);
+      });
+
+      // Find the matching variant
+      let matchedVariant = productData.variants.find(variant => {
+        return variant.options.every((option, index) => option === selectedOptions[index]);
+      });
+
+      if (matchedVariant) {
+        // Update the hidden input with the new variant ID
+        productBox.querySelector('.main-product-id').value = matchedVariant.id;
+
+        // Optionally update other UI elements (price, image, etc.)
+        productBox.querySelector('.ny-popup-content p:nth-child(2)').textContent = matchedVariant.price + ' USD';
+      }
+    });
+  });
+});
+
+  
+     document.querySelectorAll('.ny-box').forEach(productBox => {
+      // Select Color and Size radios *within the current product box*
+      const radioButtonsColor = productBox.querySelectorAll('input[name="Color"]');
+      const radioButtonsSize = productBox.querySelectorAll('input[name="Size"]');
+    
+      // Function to handle radio button selection within the product box
+      function handleRadioChange(radioGroup) {
+        radioGroup.forEach(radio => {
+          radio.addEventListener('change', function() {
+            // Uncheck all radios in the current group (within the same product box)
+            radioGroup.forEach(r => r.removeAttribute('checked',''));
+    
+            // Check the clicked radio button
+            this.setAttribute('checked','');
+          });
+        });
+      }
+    
+      // Apply scoped radio change logic to both groups
+      handleRadioChange(radioButtonsColor);
+      handleRadioChange(radioButtonsSize);
+    });
+
+
+
+  const addToCartForms = document.querySelectorAll('form[action="/cart/add"]');
+
+addToCartForms.forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    // Prevent normal submission
+    event.preventDefault();
+ console.log(form)
+    // Submit form with ajax
+    await fetch("/cart/add", {
+      method: "post",
+      body: new FormData(form),
+    });
+
+    // Get new cart object
+    const res = await fetch("/cart.json");
+    console.log(res)
+    const cart = await res.json();
+
+    // Update cart count
+    document.querySelectorAll(".cart-count").forEach((el) => {
+      el.textContent = cart.item_count;
+    });
+
+    // Display message
+    const message = document.createElement("p");
+    message.classList.add("added-to-cart");
+    message.textContent = "Added to cart!";
+    form.appendChild(message);
+  });
+});
+</script>    
 {% schema %}
 {
   "name": "NY Product Grid",
@@ -67,4 +224,3 @@
   ]
 }
 {% endschema %}
-
