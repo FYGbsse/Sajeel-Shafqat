@@ -39,10 +39,10 @@
                 <div>{{ option.name }}</div>
 
                 {% if option.name == 'Size' %}
-                <button class="ny-accordion-toggle" id="size-toggle">
+                <div class="ny-accordion-toggle" id="size-toggle">
                   <span>Choose your size</span>
                   <span class="ny-accordion-icon">▼</span>
-                </button>
+                </div>
                 {% endif %}
 
                 <div class="ny-field-{{ option.name }} main-product-option-radios" id="{% if option.name == 'Size' %}ny-size-wrapper{% endif %}">
@@ -223,7 +223,7 @@ text-decoration-skip-ink: none;
 
 
 
-.accordion-content {
+#ny-size-wrapper {
   display: none;
   border-top: 1px solid #000;
   background-color: #f9f9f9;
