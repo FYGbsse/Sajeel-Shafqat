@@ -37,6 +37,14 @@
             {% for option in product.options_with_values %}
               <div class="main-product-option">
                 <div>{{ option.name }}</div>
+
+                {% if option.name == 'Size' %}
+                <button class="accordion-toggle" id="size-toggle">
+                  <span>Choose your size</span>
+                  <span class="accordion-icon">▼</span>
+                </button>
+                {% endif %}
+
                 <div class="ny-field-{{ option.name }} main-product-option-radios">
                   {% for value in option.values %}
                     <div style="background-color:{{ value }}" class="main-product-option-radio">
@@ -60,6 +68,32 @@
             {% endfor %}
           </div>
         {% endif %}
+
+
+
+        <div class="accordion">
+          <button class="accordion-toggle" id="size-toggle">
+            <span>Choose your size</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-content" id="size-content">
+            <label>
+              <input type="radio" name="size" value="M" />
+              M
+            </label>
+            <label>
+              <input type="radio" name="size" value="L" />
+              L
+            </label>
+            <label>
+              <input type="radio" name="size" value="XL" />
+              XL
+            </label>
+          </div>
+        </div>
+        
+
+
 
 
   
@@ -170,6 +204,57 @@ text-decoration-skip-ink: none;
     justify-content: end;
     display: flex;
 }
+
+
+
+
+
+.accordion {
+  border: 1px solid #000;
+  width: 200px;
+  font-family: Arial, sans-serif;
+}
+
+.accordion-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.accordion-content {
+  display: none;
+  border-top: 1px solid #000;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.accordion-content label {
+  display: block;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+.accordion-toggle.open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+
+
+
+
+
+
+
 @media screen (max-width:1439px) {
 .ny-container{
     padding-right: 5%;
@@ -276,6 +361,24 @@ addToCartForms.forEach((form) => {
     form.appendChild(message);
   });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("size-toggle");
+  const accordionContent = document.getElementById("size-content");
+
+  toggleButton.addEventListener("click", () => {
+    const isOpen = accordionContent.style.display === "block";
+
+    // Toggle the accordion content
+    accordionContent.style.display = isOpen ? "none" : "block";
+
+    // Toggle the arrow direction
+    toggleButton.classList.toggle("open", !isOpen);
+  });
+});
+
 </script>    
 {% schema %}
 {
