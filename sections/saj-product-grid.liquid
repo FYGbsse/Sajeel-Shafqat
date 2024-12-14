@@ -37,7 +37,7 @@
             {% for option in product.options_with_values %}
               <div class="main-product-option">
                 <div>{{ option.name }}</div>
-                <div class="main-product-option-radios">
+                <div class="ny-field-{{ option.name }} main-product-option-radios">
                   {% for value in option.values %}
                     <div style="background-color:{{ value }}" class="main-product-option-radio">
                       <input
@@ -149,10 +149,10 @@ text-decoration-skip-ink: none;
   display:none;
 }
 
-.main-product-option-radios{
+.ny-field-Color{
    display:flex;
 }
-.main-product-option-radio label{
+.ny-field-Color .main-product-option-radio label{
 width: 50%;
 height: 40px;
 border: 0.5px 0px 0px 0px;
@@ -165,7 +165,7 @@ text-align: left;
 text-underline-position: from-font;
 text-decoration-skip-ink: none;
 }
-.main-product-option-radio {
+.ny-field-Color .main-product-option-radio {
     width: 50%;
     justify-content: end;
     display: flex;
