@@ -45,7 +45,7 @@
                 </div>
                 {% endif %}
 
-                <div class="ny-field-{{ option.name }} main-product-option-radios" id="{% if option.name == 'Size' %}ny-size-wrapper{% endif %}">
+                <div class="ny-field-{{ option.name }} main-product-option-radios {% if option.name == 'Size' %}ny-size-wrapper{% endif %}">
                   {% for value in option.values %}
                     <div style="background-color:{{ value }}" class="main-product-option-radio">
                       <input
@@ -223,7 +223,7 @@ text-decoration-skip-ink: none;
 
 
 
-#ny-size-wrapper {
+.ny-size-wrapper {
   display: none;
 }
 
@@ -237,7 +237,7 @@ input[type="radio"] {
   margin-right: 5px;
 }
 
-.accordion-toggle.open .accordion-icon {
+.ny-accordion-toggle.open .accordion-icon {
   transform: rotate(180deg);
 }
 
@@ -359,7 +359,7 @@ addToCartForms.forEach((form) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".ny-box").forEach(productBox => {
-    const toggleButton = productBox.querySelector(".accordion-toggle");
+    const toggleButton = productBox.querySelector(".ny-accordion-toggle");
     const accordionContent = productBox.querySelector(".ny-size-wrapper");
 
     toggleButton.addEventListener("click", () => {
