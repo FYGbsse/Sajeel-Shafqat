@@ -1,73 +1,78 @@
-<div class="{{section.class}}">
+<div class="{{section.class}}" id="product-grid-{{ section.id }}">
     <div class="ny-container">
       <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
       <div class="ny-product-grid">
-        {% for product_array in section.settings.ny_product_list %}    
-             <div class="ny-box">
+        {% for product in section.settings.ny_product_list %} 
+          
+          {% assign selectedvariant = product.first_or_selected_variant %}
+             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}'>
                 <div class="ny-image-box">               
-                        {% assign images = product_array.media | where: 'media_type', 'image' %}
+                        {% assign images = product.media | where: 'media_type', 'image' %}
                             {% for image in images limit : 1 %}
                             {{- image | image_url: width: 433 | image_tag }}
                             {% endfor %}
                         </div>
                 <div class="ny-selection-box">
 
+<div class="ny-popup-grid">
+  <div class="ny-popup-top">
+    <div class="ny-popup-image">
+        <img src="{{ product.featured_image | img_url: 'master' }}" width="300px">
+    </div>
+    <div class="ny-popup-content">
+        <h2>{{product.title}}</h2>
+        <p>{{selectedvariant.price  | money }}</p>
+        <p>{{product.description}}</p>
+    </div>
+  </div>
 
 
-                    <div class="ny-popup-grid">
-                      <div class="ny-popup-top">
-                        <div class="ny-popup-image">
-                            <p>{{product.selected_or_first_available_variant.image }}</p>
-                        </div>
-                        <div class="ny-popup-content">
-                            <h2>{{product.title}}</h2>
-                            <p>{{product.selected_or_first_available_variant.price }}</p>
-                            <p>{{product.description}}</p>
-                        </div>
-                      </div>
-                        <div class="ny-popup-form">
-                        {% form '', product %}
+<div class="ny-popup-form">
+  {% form 'product', product %}
 
 
-                          {% if product.variants.size > 1 %}
-                            <div class="main-product-options">
-                              {% for option in product.options_with_values %}
-                                <fieldset class="main-product-option">
-                                  <legend>{{ option.name }}</legend>
-                                  <div class="main-product-option-radios">
-                                    {% for value in option.values %}
-                                      <div class="main-product-option-radio">
-                                        <input
-                                          {% if option.selected_value == value %}
-                                            checked
-                                          {% endif %}
-                                          type="radio"
-                                          name="{{ option.name }}"
-                                          value="{{ value }}"
-                                          class="product-option-select"
-                                          id="{{ option.name | handlize }}-{{ value | handlize }}"
-                                        >
-                                        <label for="{{ option.name | handlize }}-{{ value | handlize }}">
-                                          {{ value }}
-                                        </label>
-                                      </div>
-                                    {% endfor %}
-                                  </div>
-                                </fieldset>
-                              {% endfor %}
-                            </div>
-                          {% endif %}
-                           
-                          <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                          <input type="text" name="quantity" min="1" value="1">
-                          <input type="submit" name="Add to Cart" id="addToCart" >
-                        {% endform %}
-                    
-                      </div>
+
+    {% if product.variants.size > 1 %}
+          <div class="main-product-options">
+            {% for option in product.options_with_values %}
+              <fieldset class="main-product-option">
+                <legend>{{ option.name }}</legend>
+                <div class="main-product-option-radios">
+                  {% for value in option.values %}
+                    <div class="main-product-option-radio">
+                      <input
+                        {% if option.selected_value == value %}
+                          checked
+                        {% endif %}
+                        type="radio"
+                        name="{{ option.name }}"
+                        value="{{ value }}"
+                        class="product-option-select"
+                        id="{{ option.name | handlize }}-{{ value | handlize }}"
+                      >
+                      <label for="{{ option.name | handlize }}-{{ value | handlize }}">
+                        {{ value }}
+                      </label>
                     </div>
+                  {% endfor %}
+                </div>
+              </fieldset>
+            {% endfor %}
+          </div>
+        {% endif %}
 
 
+  
+  <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="text" name="quantity" min="1" value="1">
+  <input type="submit" value="Add to cart">
 
+  {% endform %}
+
+  </div>
+</div>
+
+                  
                 </div>
              </div>
         {% endfor %}    
