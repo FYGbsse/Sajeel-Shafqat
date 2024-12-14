@@ -17,7 +17,7 @@
 <div class="ny-popup-grid">
   <div class="ny-popup-top">
     <div class="ny-popup-image">
-        <img src="{{ product.featured_image | img_url: 'master' }}" width="100%">
+        <img src="{{ product.featured_image | img_url: 'master' }}" width="120px" height="140px">
     </div>
     <div class="ny-popup-content">
         <h2>{{product.title}}</h2>
@@ -87,9 +87,17 @@
     row-gap: 19px;
     column-gap: 19px;
     grid-template-columns: 433px 433px 433px}
+
+/* Popup Box CSS*/    
+.ny-selection-box{
+    width: 333px;
+    margin-right: 31px;
+    margin-left: 31px;
+}    
 .ny-box{}
-.ny-popup-image,.ny-popup-content{width:50%;}
-.nny-popup-top{display:flex;}
+.ny-popup-image{width:50%;margin-left: 17px;}
+.ny-popup-content{width:50%;}
+.ny-popup-top{display:flex;}
 
 @media screen (max-width:1439px) {
 .ny-container{
