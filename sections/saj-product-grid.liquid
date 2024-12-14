@@ -225,9 +225,6 @@ text-decoration-skip-ink: none;
 
 #ny-size-wrapper {
   display: none;
-  border-top: 1px solid #000;
-  background-color: #f9f9f9;
-  padding: 10px;
 }
 
 .accordion-content label {
@@ -361,19 +358,22 @@ addToCartForms.forEach((form) => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleButton = document.getElementById("size-toggle");
-  const accordionContent = document.getElementById("ny-size-wrapper");
+  document.querySelectorAll(".ny-box").forEach(productBox => {
+    const toggleButton = productBox.querySelector(".accordion-toggle");
+    const accordionContent = productBox.querySelector(".ny-size-wrapper");
 
-  toggleButton.addEventListener("click", () => {
-    const isOpen = accordionContent.style.display === "block";
+    toggleButton.addEventListener("click", () => {
+      const isOpen = accordionContent.style.display === "block";
 
-    // Toggle the accordion content
-    accordionContent.style.display = isOpen ? "none" : "block";
+      // Toggle visibility of this product's accordion
+      accordionContent.style.display = isOpen ? "none" : "block";
 
-    // Toggle the arrow direction
-    toggleButton.classList.toggle("open", !isOpen);
+      // Toggle arrow direction
+      toggleButton.classList.toggle("open", !isOpen);
+    });
   });
 });
+
 
 </script>    
 {% schema %}
