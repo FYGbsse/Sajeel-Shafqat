@@ -35,8 +35,8 @@
     {% if product.variants.size > 1 %}
           <div class="main-product-options">
             {% for option in product.options_with_values %}
-              <fieldset class="main-product-option">
-                <legend>{{ option.name }}</legend>
+              <div class="main-product-option">
+                <div>{{ option.name }}</div>
                 <div class="main-product-option-radios">
                   {% for value in option.values %}
                     <div class="main-product-option-radio">
@@ -50,13 +50,13 @@
                         class="product-option-select"
                         id="{{ option.name | handlize }}-{{ value | handlize }}"
                       >
-                      <label for="{{ option.name | handlize }}-{{ value | handlize }}">
+                      <label class="button" for="{{ option.name | handlize }}-{{ value | handlize }}">
                         {{ value }}
                       </label>
                     </div>
                   {% endfor %}
                 </div>
-              </fieldset>
+              </div>
             {% endfor %}
           </div>
         {% endif %}
@@ -64,8 +64,8 @@
 
   
   <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-  <input type="text" name="quantity" type="hidden" min="1" value="1">
-  <input type="submit" value="Add to cart">
+  <input type="hidden" name="quantity" min="1" value="1">
+  <input id="ny-submit" type="submit" value="ADD TO CART">
 
   {% endform %}
 
@@ -128,8 +128,39 @@ text-underline-position: from-font;
 text-decoration-skip-ink: none;
 
 }
-.ny-popup-top{display:flex;}
 
+.ny-popup-top{display:flex;}
+.ny-submit{
+  width: 100%;
+    max-height: 45px;
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.48px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #fff;
+    background: #000;
+    height: 45px;
+}
+.main-product-option-radio input{
+  display:none;
+}
+.main-product-option-radio label{
+width: 50%;
+height: 40px;
+border: 0.5px 0px 0px 0px;
+font-family: Jost;
+font-size: 18px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: -0.02em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
 @media screen (max-width:1439px) {
 .ny-container{
     padding-right: 5%;
