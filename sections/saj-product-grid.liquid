@@ -20,9 +20,9 @@
         <img src="{{ product.featured_image | img_url: 'master' }}" width="120px" height="140px">
     </div>
     <div class="ny-popup-content">
-        <h2>{{product.title}}</h2>
-        <p class="price">{{selectedvariant.price  | money }}</p>
-        <p class="desc">{{product.description}}</p>
+        <h2>{{ product.title |  strip_html }}</h2>
+        <p class="price"></p>
+        <p class="desc">{{product.description |  strip_html }}</p>
     </div>
   </div>
 
@@ -64,7 +64,7 @@
 
   
   <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-  <input type="text" name="quantity" min="1" value="1">
+  <input type="text" name="quantity" type="hidden" min="1" value="1">
   <input type="submit" value="Add to cart">
 
   {% endform %}
