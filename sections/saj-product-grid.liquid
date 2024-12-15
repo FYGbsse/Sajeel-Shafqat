@@ -23,7 +23,7 @@ assign left_6 = block.settings.horizontal_pos_6 | append: '%'
           {% assign selectedvariant = product.first_or_selected_variant %}
              <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer"
-                style="top: top_{{forloop.index}};left: left_{{forloop.index}};position:relative;"
+                style="top: {{'top_'forloop.index}};left: {{'left_'forloop.index}};position:relative;"
                 >This</span>
                
                 <div class="ny-selection-box">
