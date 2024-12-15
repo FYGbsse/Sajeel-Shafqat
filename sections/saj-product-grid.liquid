@@ -47,7 +47,7 @@
 
                 <div class="ny-field-{{ option.name }} main-product-option-radios {% if option.name == 'Size' %}ny-size-wrapper{% endif %}">
                   {% for value in option.values %}
-                    <div style="background-color:{{ value }}" class="main-product-option-radio">
+                    <div {% if option.name == 'Size' %}style="background-color:{{ value }}"{% endif %} class="main-product-option-radio">
                       <input
                         {% if option.selected_value == value %}
                           checked
@@ -107,6 +107,8 @@
   width: 333px;
     padding-right: 31px;
     padding-left: 31px;
+    height: 447px;
+    max-height: 447px;
 }    
 .ny-box{}
 .ny-popup-image{    width: max-content;
@@ -208,30 +210,18 @@ text-decoration-skip-ink: none;
 .ny-field-Size label{
   width:100%;
 }
-
-
-
-
-
-
-
-.accordion {
-  border: 1px solid #000;
-  width: 200px;
-  font-family: Arial, sans-serif;
+.ny-field-Size .main-product-option-radio{
+    height: 36px;
+    display: flex;
+    align-items: center;
 }
-
-
-
 .ny-size-wrapper {
   display: none;
+  height: 99px;
+  overflow: overlay;
 }
 
-.accordion-content label {
-  display: block;
-  padding: 5px 0;
-  cursor: pointer;
-}
+
 
 input[type="radio"] {
   margin-right: 5px;
