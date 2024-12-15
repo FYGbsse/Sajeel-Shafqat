@@ -75,7 +75,7 @@
   
   <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
   <input type="hidden" name="quantity" min="1" value="1">
-  <input id="ny-submit" type="submit" value="ADD TO CART">
+  <input id="ny-submit" type="submit" value="ADD TO CART"><span class="svg-wrapper">{{- 'arrow-pointer.svg' | inline_asset_content -}}</span>
 
   {% endform %}
 
@@ -201,6 +201,8 @@ text-align: left;
 text-underline-position: from-font;
 text-decoration-skip-ink: none;
 border: none;
+padding-left: 10px;
+justify-content: flex-start;
 }
 .ny-field-Color .main-product-option-radio :not(input:checked ) + label{
   color: black;
@@ -275,7 +277,10 @@ border: none;
   transform: rotate(180deg);
   transition: transform 0.5s;
 }
-
+.ny-accordion-toggle img{
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
 
 input[type="radio"] {
   margin-right: 5px;
@@ -477,7 +482,7 @@ addToCartForms.forEach((form) => {
     const cart = await res.json();
 
     // Update cart count
-    document.querySelectorAll(".cart-count").forEach((el) => {
+    document.querySelectorAll(".cart-count-bubble span").forEach((el) => {
       el.textContent = cart.item_count;
     });
 
@@ -523,6 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (placeholder) {
           // Update the placeholder text with the clicked label's text
           placeholder.textContent = label.textContent.trim();
+          placeholder.style.margin = "auto";
         }
       });
   });
