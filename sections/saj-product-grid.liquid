@@ -1,17 +1,17 @@
 
 {%- liquid 
-assign top_1 = block.settings.vertical_pos_1 | append: '%'
-assign left_1 = block.settings.horizontal_pos_1 | append: '%'
-assign top_2 = block.settings.vertical_pos_2 | append: '%'
-assign left_2 = block.settings.horizontal_pos_2 | append: '%'
-assign top_3 = block.settings.vertical_pos_3 | append: '%'
-assign left_3 = block.settings.horizontal_pos_3 | append: '%'
-assign top_4 = block.settings.vertical_pos_4 | append: '%'
-assign left_4 = block.settings.horizontal_pos_4 | append: '%'
-assign top_5 = block.settings.vertical_pos_5 | append: '%'
-assign left_5 = block.settings.horizontal_pos_5 | append: '%'
-assign top_6 = block.settings.vertical_pos_6 | append: '%'
-assign left_6 = block.settings.horizontal_pos_6 | append: '%'
+assign top_1 = section.settings.vertical_pos_1 | append: '%'
+assign left_1 = section.settings.horizontal_pos_1 | append: '%'
+assign top_2 = section.settings.vertical_pos_2 | append: '%'
+assign left_2 = section.settings.horizontal_pos_2 | append: '%'
+assign top_3 = section.settings.vertical_pos_3 | append: '%'
+assign left_3 = section.settings.horizontal_pos_3 | append: '%'
+assign top_4 = section.settings.vertical_pos_4 | append: '%'
+assign left_4 = section.settings.horizontal_pos_4 | append: '%'
+assign top_5 = section.settings.vertical_pos_5 | append: '%'
+assign left_5 = section.settings.horizontal_pos_5 | append: '%'
+assign top_6 = section.settings.vertical_pos_6 | append: '%'
+assign left_6 = section.settings.horizontal_pos_6 | append: '%'
 
 -%}
 <div class="{{section.class}}" id="product-grid-{{ section.id }}">
@@ -23,7 +23,7 @@ assign left_6 = block.settings.horizontal_pos_6 | append: '%'
           {% assign selectedvariant = product.first_or_selected_variant %}
              <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer"
-                style="position:relative;"
+                style="position:relative;top:{{'left_'forloop.index}};"
                 >This</span>
                 <div class="ny-selection-box">
                 <div class="ny-close" style="text-align: right;">x</div>
