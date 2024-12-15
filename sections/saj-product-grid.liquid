@@ -1,3 +1,5 @@
+
+{%- liquid 
 assign top_1 = block.settings.vertical_pos_1 | append: '%'
 assign left_1 = block.settings.horizontal_pos_1 | append: '%'
 assign top_2 = block.settings.vertical_pos_2 | append: '%'
@@ -10,6 +12,8 @@ assign top_5 = block.settings.vertical_pos_5 | append: '%'
 assign left_5 = block.settings.horizontal_pos_5 | append: '%'
 assign top_6 = block.settings.vertical_pos_6 | append: '%'
 assign left_6 = block.settings.horizontal_pos_6 | append: '%'
+
+-%}
 <div class="{{section.class}}" id="product-grid-{{ section.id }}">
     <div class="ny-container">
       <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
