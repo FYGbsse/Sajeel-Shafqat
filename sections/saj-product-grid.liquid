@@ -1,3 +1,15 @@
+assign top_1 = block.settings.vertical_pos_1 | append: '%'
+assign left_1 = block.settings.horizontal_pos_1 | append: '%'
+assign top_2 = block.settings.vertical_pos_2 | append: '%'
+assign left_2 = block.settings.horizontal_pos_2 | append: '%'
+assign top_3 = block.settings.vertical_pos_3 | append: '%'
+assign left_3 = block.settings.horizontal_pos_3 | append: '%'
+assign top_4 = block.settings.vertical_pos_4 | append: '%'
+assign left_4 = block.settings.horizontal_pos_4 | append: '%'
+assign top_5 = block.settings.vertical_pos_5 | append: '%'
+assign left_5 = block.settings.horizontal_pos_5 | append: '%'
+assign top_6 = block.settings.vertical_pos_6 | append: '%'
+assign left_6 = block.settings.horizontal_pos_6 | append: '%'
 <div class="{{section.class}}" id="product-grid-{{ section.id }}">
     <div class="ny-container">
       <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
@@ -5,8 +17,10 @@
         {% for product in section.settings.ny_product_list %} 
           
           {% assign selectedvariant = product.first_or_selected_variant %}
-             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="backgroud-image: url('{{ product.featured_image | img_url: 'master' }}')">
-                <span class="ny-pointer-{{forloop.index}} pointer">This is pointer</span>
+             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
+                <span class="ny-pointer-{{forloop.index}} pointer"
+                style="top: top_{{forloop.index}};left: left_{{forloop.index}};position:relative;"
+                >This</span>
                
                 <div class="ny-selection-box">
                 <div class="ny-close" style="text-align: right;">x</div>
@@ -475,6 +489,150 @@ document.addEventListener("DOMContentLoaded", () => {
     "id": "ny_product_list",
     "label": "Products",
     "limit": 6
+    },
+    {
+        "type" : "header",
+        "content" : "Product 1 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_1",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_1",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 2 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_2",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_2",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 3 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_3",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_3",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 4 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_4",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_4",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 5 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_5",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_5",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 6 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_6",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_6",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
     }
   ],
   "presets": [
