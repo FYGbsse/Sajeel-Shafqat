@@ -1,23 +1,3 @@
-
-
-{%  assign top_1 = section.settings.vertical_pos_1 | append: '%' %}
-{%  assign left_1 = section.settings.horizontal_pos_1 | append: '%' %}
-{%  assign top_2 = section.settings.vertical_pos_2 | append: '%' %}
-{%  assign left_2 = section.settings.horizontal_pos_2 | append: '%' %}
-{%  assign top_3 = section.settings.vertical_pos_3 | append: '%' %}
-{%  assign left_3 = section.settings.horizontal_pos_3 | append: '%' %}
-{%  assign top_4 = section.settings.vertical_pos_4 | append: '%' %}
-{%  assign left_4 = section.settings.horizontal_pos_4 | append: '%' %}
-{%  assign top_5 = section.settings.vertical_pos_5 | append: '%' %}
-{%  assign left_5 = section.settings.horizontal_pos_5 | append: '%' %}
-{%  assign top_6 = section.settings.vertical_pos_6 | append: '%' %}
-{%  assign left_6 = section.settings.horizontal_pos_6 | append: '%' %}
-<h1>1- {{ top_1 }} --{{section.settings.vertical_pos_1}} </h1>
-<h1>1- {{ top_2 }} --{{section.settings.vertical_pos_2}} </h1>
-<h1>1- {{ top_3 }} --{{section.settings.vertical_pos_3}} </h1>
-
-testibng
-
 <div class="{{section.class}}" id="product-grid-{{ section.id }}">
     <div class="ny-container">
       <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
@@ -27,8 +7,8 @@ testibng
           {% assign selectedvariant = product.first_or_selected_variant %}
              <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer"
-                style="position:relative;top:{{'left_'forloop.index}};"
-                >This {{top_1}} {{section.settings.vertical_pos_1}}</span>
+                style="position:relative;"
+                >This</span>
                 <div class="ny-selection-box">
                 <div class="ny-close" style="text-align: right;">x</div>
                 <div class="ny-popup-grid">
