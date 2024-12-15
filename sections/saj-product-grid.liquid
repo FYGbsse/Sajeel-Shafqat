@@ -13,7 +13,7 @@
                             {% endfor %}
                         </div>
                 <div class="ny-selection-box">
-
+<div class="ny-close" style="text-align: right;">x</div>
 <div class="ny-popup-grid">
   <div class="ny-popup-top">
     <div class="ny-popup-image">
@@ -47,7 +47,7 @@
 
                 <div class="ny-field-{{ option.name }} main-product-option-radios {% if option.name == 'Size' %}ny-size-wrapper{% endif %}">
                   {% for value in option.values %}
-                    <div {% if option.name == 'Size' %}style="background-color:{{ value }}"{% endif %} class="main-product-option-radio">
+                    <div {% if option.name == 'Color' %}style="background-color:{{ value }}"{% endif %} class="main-product-option-radio">
                       <input
                         {% if option.selected_value == value %}
                           checked
@@ -206,6 +206,7 @@ text-decoration-skip-ink: none;
   padding: 10px 0 10px 10px;
   cursor: pointer;
   font-size: 14px;
+  margin-bottom: 54px;
 }
 .ny-field-Size label{
   width:100%;
@@ -226,7 +227,9 @@ text-decoration-skip-ink: none;
 input[type="radio"] {
   margin-right: 5px;
 }
-
+.ny-accordion-toggle.open{
+  margin-bottom: 0px;
+}
 .ny-accordion-toggle.open .accordion-icon {
   transform: rotate(180deg);
 }
