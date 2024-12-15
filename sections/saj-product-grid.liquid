@@ -17,7 +17,7 @@
                     </div>
                     <div class="ny-popup-content">
                         <h2>{{ product.title |  strip_html }}</h2>
-                        <p class="price">{{product.price | money_with_currency }}</p>
+                        <p class="price">{{product.price | money_without_currency }}</p>
                         <p class="desc">{{product.description |  strip_html }}</p>
                     </div>
                   </div>
@@ -32,7 +32,7 @@
           <div class="main-product-options">
             {% for option in product.options_with_values %}
               <div class="main-product-option">
-                <div>{{ option.name }}</div>
+                <div class="ny-option">{{ option.name }}</div>
 
                 {% if option.name == 'Size' %}
                 <div class="ny-accordion-toggle" id="size-toggle">
@@ -119,7 +119,7 @@
 }
 .ny-box{ width: 433px;height: 433px;}
 .ny-popup-image{    width: max-content;
-margin-right: 17px;}
+margin-right: 5px;}
 .ny-popup-content{width:50%;}
 .ny-popup-content h2 {
 font-family: Jost;
@@ -175,9 +175,20 @@ text-decoration-skip-ink: none;
 .ny-field-Color{
    display:flex;
 }
+.ny-option{
+  font-family: Jost;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
 .ny-field-Color .main-product-option-radio label{
 width: 50%;
-height: 40px;
+height: 40.44px;
+min-height: 40.44px;
 border: 0.5px 0px 0px 0px;
 font-family: Jost;
 font-size: 18px;
