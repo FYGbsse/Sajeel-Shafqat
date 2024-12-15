@@ -52,9 +52,9 @@
                         name="{{ option.name }}"
                         value="{{ value }}"
                         class="product-option-select"
-                        id="{{ option.name | handlize }}-{{ value | handlize }}"
+                        id="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}"
                       >
-                      <label class="button" for="{{ option.name | handlize }}-{{ value | handlize }}">
+                      <label class="button" for="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}">
                         {{ value }}
                       </label>
                     </div>
@@ -106,7 +106,7 @@
     height: 447px;
     max-height: 447px;
     padding-bottom: 55px;
-    display:block;
+    display:none;
     background: #ffffff;
 } 
 
@@ -489,7 +489,7 @@ addToCartForms.forEach((form) => {
   });
 });
 
-/*
+
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".ny-box").forEach(productBox => {
@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-*/
+
 </script>    
 {% schema %}
 {
