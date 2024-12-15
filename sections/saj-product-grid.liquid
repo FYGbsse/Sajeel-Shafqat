@@ -384,21 +384,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-document.querySelectorAll('.ny-box').forEach(productBox => {
-  const viewForm = productBox.querySelector(".ny-selection-box");
-  const closeForm = productBox.querySelector(".ny-close");
+  document.querySelectorAll('.ny-box').forEach(productBox => {
+    const viewForm = productBox.querySelector(".ny-selection-box");
+    const closeForm = productBox.querySelector(".ny-close");
 
-    this.addEventListener("click", () => {
-      const isFormOpen = viewForm.classList.toggle("open", !isFormOpen)
-    })
+    // Add event listener to open the form
+    productBox.addEventListener("click", () => {
+      viewForm.classList.add("open"); // Adds the 'open' class
+    });
 
-    closeForm.addEventListener("click", () => {
-      const isFormOpen = viewForm.classList.toggle("open", !isFormOpen)
-    })
-
-
-  })
-
+    // Add event listener to close the form
+    closeForm.addEventListener("click", (event) => {
+      event.stopPropagation(); // Prevents the event from bubbling up
+      viewForm.classList.remove("open"); // Removes the 'open' class
+    });
+  });
 });
 </script>    
 {% schema %}
