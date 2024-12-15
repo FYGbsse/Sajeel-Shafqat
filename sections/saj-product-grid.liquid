@@ -23,9 +23,8 @@ assign left_6 = block.settings.horizontal_pos_6 | append: '%'
           {% assign selectedvariant = product.first_or_selected_variant %}
              <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer"
-                style="top: {{'top_'forloop.index}};left: {{'left_'forloop.index}};position:relative;"
+                style="position:relative;"
                 >This</span>
-               
                 <div class="ny-selection-box">
                 <div class="ny-close" style="text-align: right;">x</div>
                 <div class="ny-popup-grid">
@@ -305,7 +304,30 @@ input[type="radio"] {
   z-index: 1000; /* Ensure the form appears above the overlay */
 }
 
-
+.ny-pointer-1{
+  top: {{top_1}};
+  left: {{left_1}};
+}
+.ny-pointer-2{
+  top: {{top_2}};
+  left: {{left_2}};
+}
+.ny-pointer-3{
+  top: {{top_3}};
+  left: {{left_3}};
+}
+.ny-pointer-4{
+  top: {{top_4}};
+  left: {{left_4}};
+}
+.ny-pointer-5{
+  top: {{top_5}};
+  left: {{left_5}};
+}
+.ny-pointer-6{
+  top: {{top_6}};
+  left: {{left_6}};
+}
 
 
 
