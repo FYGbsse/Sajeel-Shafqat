@@ -17,7 +17,7 @@
                     </div>
                     <div class="ny-popup-content">
                         <h2>{{ product.title |  strip_html }}</h2>
-                        <p class="price">{{product.price | money_without_currency }}</p>
+                        <p class="price">{{product.price | money_with_currency }}</p>
                         <p class="desc">{{product.description |  strip_html }}</p>
                     </div>
                   </div>
@@ -36,7 +36,7 @@
 
                 {% if option.name == 'Size' %}
                 <div class="ny-accordion-toggle" id="size-toggle">
-                  <span>Choose your size</span>
+                  <span class="ny-placeholder">Choose your size</span>
                   <span class="ny-accordion-icon"><img src="{{ 'arrow.png' |  asset_img_url: 'master' }}" width="12px" height="6px"></span>
                 </div>
                 {% endif %}
@@ -183,6 +183,8 @@ text-decoration-skip-ink: none;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-top: 10px;
+  margin-bottom: 6px;
 
 }
 .ny-field-Color .main-product-option-radio label{
@@ -257,6 +259,17 @@ border: none;
   overflow: overlay;
   border: 1px solid;
     border-top: none;
+}
+.ny-placeholder{
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
 }
 .ny-accordion-toggle.open img{
   transform: rotate(180deg);
