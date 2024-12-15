@@ -7,9 +7,9 @@
           {% assign selectedvariant = product.first_or_selected_variant %}
              <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer"
-                style="position:relative;">This</span>
+                style="position:relative;"><img src="{{ 'pointer.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></span>
                 <div class="ny-selection-box">
-                <div class="ny-close" style="text-align: right;">x</div>
+                <div class="ny-close" style="text-align: right;"><img src="{{ 'close.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></div>
                 <div class="ny-popup-grid">
                   <div class="ny-popup-top">
                     <div class="ny-popup-image">
@@ -37,7 +37,7 @@
                 {% if option.name == 'Size' %}
                 <div class="ny-accordion-toggle" id="size-toggle">
                   <span>Choose your size</span>
-                  <span class="ny-accordion-icon">▼</span>
+                  <span class="ny-accordion-icon"><img src="{{ 'arrow.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></span>
                 </div>
                 {% endif %}
 
