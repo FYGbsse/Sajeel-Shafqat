@@ -9,7 +9,7 @@
                 <span class="ny-pointer-{{forloop.index}} pointer"
                 style="position:relative;"><img src="{{ 'pointer.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></span>
                 <div class="ny-selection-box">
-                <div class="ny-close" style="text-align: right;"><img src="{{ 'close.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></div>
+                <div class="ny-close" style="text-align: right;"><img src="{{ 'close.png' |  asset_img_url: 'master' }}" width="12px" height="12px"></div>
                 <div class="ny-popup-grid">
                   <div class="ny-popup-top">
                     <div class="ny-popup-image">
@@ -37,7 +37,7 @@
                 {% if option.name == 'Size' %}
                 <div class="ny-accordion-toggle" id="size-toggle">
                   <span>Choose your size</span>
-                  <span class="ny-accordion-icon"><img src="{{ 'arrow.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></span>
+                  <span class="ny-accordion-icon"><img src="{{ 'arrow.png' |  asset_img_url: 'master' }}" width="12px" height="6px"></span>
                 </div>
                 {% endif %}
 
@@ -247,7 +247,10 @@ border: none;
   border: 1px solid;
     border-top: none;
 }
-
+.ny-accordion-toggle.open img{
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
 
 
 input[type="radio"] {
@@ -286,7 +289,14 @@ input[type="radio"] {
 .ny-selection-box.open {
   z-index: 1000; /* Ensure the form appears above the overlay */
 }
-
+.ny-close{
+  text-align: right;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding-top: 21px;
+    padding-bottom: 5px;
+}
 .ny-pointer-1{
   top: {{ section.settings.vertical_pos_1 | append: '%' }};
   left: {{ section.settings.horizontal_pos_1 | append: '%' }};
