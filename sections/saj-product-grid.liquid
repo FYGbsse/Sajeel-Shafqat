@@ -5,7 +5,7 @@
         {% for product in section.settings.ny_product_list %} 
           
           {% assign selectedvariant = product.first_or_selected_variant %}
-             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="backgroud-image: url('{{ product.featured_image | image_url: 'master' }}')">
+             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="backgroud-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer">This is pointer</span>
                
                 <div class="ny-selection-box">
@@ -13,7 +13,7 @@
                 <div class="ny-popup-grid">
                   <div class="ny-popup-top">
                     <div class="ny-popup-image">
-                        <img src="{{ product.featured_image | image_url: 'master' }}" width="120px" height="140px">
+                        <img src="{{ product.featured_image | img_url: 'master' }}" width="120px" height="140px">
                     </div>
                     <div class="ny-popup-content">
                         <h2>{{ product.title |  strip_html }}</h2>
