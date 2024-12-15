@@ -496,6 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = productBox.querySelector(".ny-accordion-toggle");
     const toggleForm = productBox.querySelector(".ny-popup-form");
     const accordionContent = productBox.querySelector(".ny-size-wrapper");
+    const toggleSelect = productBox.querySelectorAll(".ny-field-Size label");
 
     toggleButton.addEventListener("click", () => {
       const isOpen = accordionContent.style.display === "block";
@@ -507,6 +508,20 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleButton.classList.toggle("open", !isOpen);
       toggleForm.classList.toggle("open", !isOpen);
     });
+
+    toggleSelect.forEach(label => {
+      label.addEventListener("click", () => {
+        const isOpen = accordionContent.style.display === "block";
+
+        // Toggle visibility of this product's accordion
+        accordionContent.style.display = isOpen ? "none" : "block";
+
+        // Toggle arrow direction
+        toggleButton.classList.toggle("open", !isOpen);
+        toggleForm.classList.toggle("open", !isOpen);
+      });
+  });
+
   });
 }); 
 
