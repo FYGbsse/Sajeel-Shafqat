@@ -5,26 +5,22 @@
         {% for product in section.settings.ny_product_list %} 
           
           {% assign selectedvariant = product.first_or_selected_variant %}
-             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}'>
-                <div class="ny-image-box">               
-                        {% assign images = product.media | where: 'media_type', 'image' %}
-                            {% for image in images limit : 1 %}
-                            {{- image | image_url: width: 433 | image_tag }}
-                            {% endfor %}
-                        </div>
+             <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="backgroud-image: url('{{ product.featured_image | image_url: 'master' }}')">
+                <span class="ny-pointer-{{forloop.index}} pointer">This is pointer</span>
+               
                 <div class="ny-selection-box">
-<div class="ny-close" style="text-align: right;">x</div>
-<div class="ny-popup-grid">
-  <div class="ny-popup-top">
-    <div class="ny-popup-image">
-        <img src="{{ product.featured_image | img_url: 'master' }}" width="120px" height="140px">
-    </div>
-    <div class="ny-popup-content">
-        <h2>{{ product.title |  strip_html }}</h2>
-        <p class="price">{{product.price | money_with_currency }}</p>
-        <p class="desc">{{product.description |  strip_html }}</p>
-    </div>
-  </div>
+                <div class="ny-close" style="text-align: right;">x</div>
+                <div class="ny-popup-grid">
+                  <div class="ny-popup-top">
+                    <div class="ny-popup-image">
+                        <img src="{{ product.featured_image | image_url: 'master' }}" width="120px" height="140px">
+                    </div>
+                    <div class="ny-popup-content">
+                        <h2>{{ product.title |  strip_html }}</h2>
+                        <p class="price">{{product.price | money_with_currency }}</p>
+                        <p class="desc">{{product.description |  strip_html }}</p>
+                    </div>
+                  </div>
 
 
 <div class="ny-popup-form">
@@ -121,7 +117,7 @@
     z-index: 3;
     display:block;
 }
-.ny-box{}
+.ny-box{ width: 433px;height: 433px;}
 .ny-popup-image{    width: max-content;
 margin-right: 17px;}
 .ny-popup-content{width:50%;}
