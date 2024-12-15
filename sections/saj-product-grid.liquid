@@ -115,7 +115,7 @@
 } 
 
 .ny-selection-box.open{
-  position: absolute;
+  position: fixed;
     top: 20%;
     left: 38%;
     z-index: 3;
@@ -250,6 +250,27 @@ input[type="radio"] {
 
 
 
+/* The overlay background */
+.ny-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent color */
+  z-index: 999; /* Ensure it is above other content */
+  display: none; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+.ny-overlay.visible {
+  display: block; /* Show when 'visible' class is added */
+  opacity: 1;
+}
+
+.ny-selection-box.open {
+  z-index: 1000; /* Ensure the form appears above the overlay */
+}
 
 
 
@@ -384,6 +405,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.createElement("div");
+  overlay.classList.add("ny-overlay");
+  document.body.appendChild(overlay); // Append the overlay to the body
+
   document.querySelectorAll('.ny-box').forEach(productBox => {
     const viewForm = productBox.querySelector(".ny-selection-box");
     const closeForm = productBox.querySelector(".ny-close");
@@ -391,15 +416,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add event listener to open the form
     productBox.addEventListener("click", () => {
       viewForm.classList.add("open"); // Adds the 'open' class
+      overlay.classList.add("visible"); // Shows the overlay
+      document.body.style.overflow = "hidden"; // Prevents body scrolling
     });
 
     // Add event listener to close the form
     closeForm.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevents the event from bubbling up
       viewForm.classList.remove("open"); // Removes the 'open' class
+      overlay.classList.remove("visible"); // Hides the overlay
+      document.body.style.overflow = ""; // Restores body scrolling
+    });
+
+    // Close overlay on click
+    overlay.addEventListener("click", () => {
+      viewForm.classList.remove("open");
+      overlay.classList.remove("visible");
+      document.body.style.overflow = "";
     });
   });
 });
+
 </script>    
 {% schema %}
 {
