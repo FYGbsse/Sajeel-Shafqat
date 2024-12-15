@@ -512,6 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleSelect.forEach(label => {
       label.addEventListener("click", () => {
         const isOpen = accordionContent.style.display === "block";
+        const placeholder = productBox.querySelector(".ny-placeholder");
 
         // Toggle visibility of this product's accordion
         accordionContent.style.display = isOpen ? "none" : "block";
@@ -519,6 +520,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Toggle arrow direction
         toggleButton.classList.toggle("open", !isOpen);
         toggleForm.classList.toggle("open", !isOpen);
+        if (placeholder) {
+          // Update the placeholder text with the clicked label's text
+          placeholder.textContent = label.textContent.trim();
+        }
       });
   });
 
