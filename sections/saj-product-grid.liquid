@@ -24,7 +24,7 @@ assign left_6 = section.settings.horizontal_pos_6 | append: '%'
              <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
                 <span class="ny-pointer-{{forloop.index}} pointer"
                 style="position:relative;top:{{'left_'forloop.index}};"
-                >This</span>
+                >This {{top_1}} {{section.settings.vertical_pos_1}}</span>
                 <div class="ny-selection-box">
                 <div class="ny-close" style="text-align: right;">x</div>
                 <div class="ny-popup-grid">
