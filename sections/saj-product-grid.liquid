@@ -191,6 +191,13 @@ letter-spacing: -0.02em;
 text-align: left;
 text-underline-position: from-font;
 text-decoration-skip-ink: none;
+color: black;
+background: #fff;
+border: none;
+}
+.ny-field-Color .main-product-option-radio label:checked{
+  color:  #fff;
+  background: black;
 }
 .ny-field-Color .main-product-option-radio {
     width: 50%;
@@ -221,7 +228,15 @@ text-decoration-skip-ink: none;
 }
 .ny-field-Size label{
   width:100%;
+  min-height: 36px !important;
+  background: #fff;
+    color: #000;
 }
+.ny-field-Size label:hover{
+  background: #000;
+    color: #fff;
+}
+.ny-field-Size label::after{box-shadow: none;}
 .ny-field-Size .main-product-option-radio{
     height: 36px;
     display: flex;
@@ -231,6 +246,8 @@ text-decoration-skip-ink: none;
   display: none;
   height: 99px;
   overflow: overlay;
+  border: 1px solid;
+    border-top: none;
 }
 
 
