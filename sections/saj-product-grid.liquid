@@ -450,6 +450,10 @@ root.querySelectorAll('.ny-box').forEach(productBox => {
         // Optionally update other UI elements (price, image, etc.)
         productBox.querySelector('.ny-popup-content p:nth-child(2)').textContent = matchedVariant.price;
         productBox.querySelector('.ny-popup-content .ny-popup-image img').src = matchedVariant.featured_image;
+
+        if (matchedVariant.featured_image) {
+          productBox.querySelector('.ny-popup-content .ny-popup-image img').setAttribute('src', matchedVariant.featured_image.src);
+          }
       }
     });
   });
