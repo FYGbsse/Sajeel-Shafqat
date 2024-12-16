@@ -67,7 +67,7 @@ root.querySelectorAll('.ny-box').forEach(productBox => {
         productBox.querySelector('.main-product-id').value = matchedVariant.id;
 
         // Optionally update other UI elements (price, image, etc.)
-        productBox.querySelector('.ny-popup-content p:nth-child(2)').textContent = matchedVariant.price;
+        productBox.querySelector('.ny-popup-content p:nth-child(2)').textContent = 'Rs.'+ ( matchedVariant.price / 100).toFixed(2)  +'PKR';
 
         if (matchedVariant.featured_image) {
           console.log('link'+ matchedVariant.featured_image.src)
