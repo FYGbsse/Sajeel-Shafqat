@@ -271,17 +271,17 @@ input[type="radio"] {
 
 
 #ny-submit.bounce {
-  animation: bounce 0.2s ease-in-out;
+  animation: bounce 0.6s ease-in-out;
 }
 
 @keyframes bounce {
   0% {
     transform: scale(1);
   }
-  50% {
+  30% {
     transform: scale(1.1);
   }
-  100% {
+  60% {
     transform: scale(1);
   }
 }
