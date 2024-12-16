@@ -182,13 +182,15 @@ border: 1px solid #000;
   margin-bottom: 51px;
 }
 .ny-field-Size label{
-  width:100%;
-  min-height: 36px !important;
-  background: #fff;
+    width:100%;
+    min-height: 36px !important;
+    background: #fff;
     color: #000;
+    text-align: center;
+    padding-right: 40px;
 }
 .ny-field-Size label:hover{
-  background: #000;
+    background: #000;
     color: #fff;
 }
 .ny-field-Size label::after{box-shadow: none;}
