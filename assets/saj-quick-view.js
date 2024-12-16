@@ -105,13 +105,15 @@ addToCartForms.forEach((form) => {
     document.querySelectorAll(".cart-count-bubble span").forEach((el) => {
         el.textContent = cart.item_count;
     });
-    document.querySelector("#ny-submit").textContent = "ADDED";
-    document.querySelector("#ny-submit").style.backgroundImage = "unset";
-    // Display message
-    /*const message = document.createElement("p");
-    message.classList.add("added-to-cart");
-    message.textContent = "Added to cart!";
-    form.appendChild(message);*/
+    
+    const buttonSumbit = document.querySelector("#ny-submit");
+    buttonSumbit.classList.add("bounce");
+  
+    // Remove the class to reset the animation
+    buttonSumbit.addEventListener("animationend", () => {
+      buttonSumbit.classList.remove("bounce");
+    }, { once: true });
+
     });
 });
 

@@ -268,14 +268,27 @@ input[type="radio"] {
     padding-top: 20px;
     padding-bottom: 4px;
 }
-/*
-@media screen and (max-width: 1439px) {
-    .ny-container {
-        padding-right: 5%;
-        padding-left: 5%;
-    }
-}*/
 
+
+#ny-submit {
+  font-size: 16px;
+}
+
+#ny-submit.bounce {
+  animation: bounce 0.4s ease-in-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 /* Fonts Calling */
 
