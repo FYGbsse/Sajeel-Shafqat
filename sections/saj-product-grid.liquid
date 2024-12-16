@@ -54,7 +54,7 @@
                         class="product-option-select"
                         id="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}"
                       >
-                      <label class="button" for="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}">
+                      <label class="ny-button" for="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}">
                         {{ value }}
                       </label>
                     </div>
@@ -178,8 +178,12 @@ text-decoration-skip-ink: none;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #fff;
-    background: #000;
     height: 45px;
+    background: url('{{ "arrow-pointer.png" | asset_img_url }}') no-repeat 88% center;
+    border: none;
+    cursor: pointer;
+  background-color: #000;
+    
 }
 
 .main-product-option-radio input{
@@ -217,6 +221,13 @@ text-decoration-skip-ink: none;
 border: none;
 padding-left: 10px;
 justify-content: flex-start;
+min-width: calc(12rem + var(--buttons-border-width)* 2);
+display: inline-flex;
+align-items: center;
+cursor: pointer;
+text-decoration: none;
+transition: box-shadow var(--duration-short) ease;
+border: 1px solid #000;
 }
 .ny-field-Color .main-product-option-radio label:hover{
   border-width: 1px !important;
@@ -452,7 +463,7 @@ root.querySelectorAll('.ny-box').forEach(productBox => {
 
         if (matchedVariant.featured_image) {
           console.log('link'+ matchedVariant.featured_image.src)
-          productBox.querySelector('.ny-popup-content .ny-popup-image img').setAttribute('src', matchedVariant.featured_image.src);
+          productBox.querySelector('.ny-popup-image img').setAttribute('src', matchedVariant.featured_image.src);
         }
       }
     });
