@@ -1,0 +1,323 @@
+.ny-container{
+    max-width: 1337px; margin:auto;
+}
+.ny-title{
+    font-family: Lustria;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 43.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-top: 50px;
+}
+.ny-product-grid{
+    display: grid;
+    row-gap: 19px;
+    column-gap: 19px;
+    grid-template-columns: 433px 433px 433px;
+}
+
+/* Popup Box CSS*/ 
+
+.ny-selection-box{
+    width: 311px;
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 447px;
+    max-height: 447px;
+    padding-bottom: 55px;
+    display:none;
+    background: #ffffff;
+} 
+
+.ny-selection-box.open{
+    position: fixed;
+    top: 20%;
+    left: 38%;
+    z-index: 3;
+    display:block;
+}
+.ny-box{
+    width: 433px;
+    height: 433px;
+}
+.ny-popup-image{
+    width: max-content;
+    margin-right: 5px;
+}
+.ny-popup-content{
+    width:100%;
+}
+.ny-popup-content h2{
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19.2px;
+    text-align: left;
+    text-decoration-skip-ink: none;
+    height: 38px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+.ny-popup-content .price{
+    font-family: Lustria;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+.ny-popup-content .desc{
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 15.4px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.ny-popup-top{
+    display:flex;
+    max-height: 140px;
+}
+#ny-submit{
+    width: 100%;
+    max-height: 45px;
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.48px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #fff;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    background-color: #000;
+}
+.main-product-option-radio input{
+    display:none;
+}
+.ny-field-Color{
+   display:flex;
+}
+.ny-option{
+  font-family: Jost;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-top: 10px;
+  margin-bottom: 6px;
+
+}
+.ny-field-Color .main-product-option-radio label{
+width: 50%;
+height: 40.44px;
+min-height: 40.44px;
+border: 0.5px 0px 0px 0px;
+font-family: Jost;
+font-size: 18px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: -0.02em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+border: none;
+padding-left: 10px;
+justify-content: flex-start;
+min-width: calc(12rem + var(--buttons-border-width)* 2);
+display: inline-flex;
+align-items: center;
+cursor: pointer;
+text-decoration: none;
+transition: box-shadow var(--duration-short) ease;
+border: 1px solid #000;
+}
+
+.ny-field-Color .main-product-option-radio :not(input:checked ) + label{
+  color: black;
+  background: #fff;
+}
+.ny-field-Color .main-product-option-radio input:checked + label{
+  color:  #fff;
+  background: black;
+}
+.ny-field-Color .main-product-option-radio {
+    width: 50%;
+    justify-content: end;
+    display: flex;
+}
+.ny-accordion-icon{
+  border-left: 0.5px solid #000000;
+    height: 40px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ny-accordion-toggle {
+  height: 40.44px;
+  border: 0.5px solid #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 51px;
+}
+.ny-field-Size label{
+    width:100%;
+    min-height: 36px !important;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    padding-right: 40px;
+}
+.ny-field-Size label:hover{
+    background: #000;
+    color: #fff;
+}
+.ny-field-Size label::after{box-shadow: none;}
+.ny-field-Size .main-product-option-radio{
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+.ny-size-wrapper {
+    display: none;
+    height: 99px;
+    overflow: overlay;
+    border: 1px solid;
+    border-top: none;
+    scrollbar-width: none;
+}
+.ny-placeholder{
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+.ny-accordion-toggle.open img{
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
+.ny-accordion-toggle img{
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+.ny-accordion-toggle.open{
+  margin-bottom: 0px;
+}
+.ny-popup-form.open #ny-submit{
+     display: none;
+}
+.ny-accordion-toggle.open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+
+
+/* The overlay background */
+.ny-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  z-index: 999; 
+  display: none; 
+  transition: opacity 0.3s ease;
+}
+.ny-overlay.visible {
+  display: block; 
+  opacity: 1;
+}
+.ny-selection-box.open {
+  z-index: 1000; 
+}
+.ny-close{
+  text-align: right;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding-top: 20px;
+    padding-bottom: 4px;
+}
+
+
+#ny-submit.bounce {
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+/* Fonts Calling */
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jost/v18/92zPtBhPNqw79Ij1E865zBUv7mz9JTVFNIg8mg.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jost/v18/92zPtBhPNqw79Ij1E865zBUv7mz9JTVPNIg8mg.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jost/v18/92zPtBhPNqw79Ij1E865zBUv7mz9JTVBNIg.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lustria';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lustria/v13/9oRONYodvDEyjuhOnC8zMw.woff2) format('woff2');
+}
+
+  

@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "saj_page_header_tQ8ymf": {
+      "type": "saj-page-header",
+      "disabled": true,
+      "settings": {
+        "ny_logo": "shopify://shop_images/logo-ny.png",
+        "ny_tagline": "Find the ideal gift for your loved ones.",
+        "ny_button_label": "Button label",
+        "ny_button_link": "shopify://pages/contact"
+      }
+    },
+    "saj_product_grid_RtD7Cm": {
+      "type": "saj-product-grid",
+      "settings": {
+        "ny_title": "Tisso vison in the wild",
+        "ny_product_list": [
+          "accordion-pleated-dress",
+          "green-trench-coat",
+          "long-sleeve-tennis-top",
+          "tailored-jacket-copy",
+          "example-t-shirt",
+          "tennis-blue-t-shirt"
+        ],
+        "horizontal_pos_1": 34,
+        "vertical_pos_1": 38,
+        "horizontal_pos_2": 38,
+        "vertical_pos_2": 55,
+        "horizontal_pos_3": 12,
+        "vertical_pos_3": 35,
+        "horizontal_pos_4": 22,
+        "vertical_pos_4": 57,
+        "horizontal_pos_5": 0,
+        "vertical_pos_5": 0,
+        "horizontal_pos_6": 0,
+        "vertical_pos_6": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "saj_page_header_tQ8ymf",
+    "saj_product_grid_RtD7Cm"
+  ]
+}
