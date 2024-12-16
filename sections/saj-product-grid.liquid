@@ -136,6 +136,10 @@ font-weight: 300;
 line-height: 19.2px;
 text-align: left;
 text-decoration-skip-ink: none;
+height: 38px;
+margin: 0px;
+display: flex;
+align-items: center;
 
 }
 .ny-popup-content .price {
@@ -146,6 +150,8 @@ line-height: 19.2px;
 text-align: left;
 text-underline-position: from-font;
 text-decoration-skip-ink: none;
+margin-top: 10px;
+margin-bottom: 12px;
 
 }
 .ny-popup-content .desc {
@@ -442,7 +448,8 @@ root.querySelectorAll('.ny-box').forEach(productBox => {
         productBox.querySelector('.main-product-id').value = matchedVariant.id;
 
         // Optionally update other UI elements (price, image, etc.)
-        productBox.querySelector('.ny-popup-content p:nth-child(2)').textContent = matchedVariant.price + ' USD';
+        productBox.querySelector('.ny-popup-content p:nth-child(2)').textContent = matchedVariant.price;
+        productBox.querySelector('.ny-popup-content .ny-popup-image img').src = matchedVariant.featured_image;
       }
     });
   });
