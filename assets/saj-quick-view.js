@@ -33,7 +33,7 @@ document.querySelectorAll('.ny-box').forEach(productBox => {
 -Display image with varient image and varient pricing
 */
 // Root container for the product grid
-var root = document.querySelector('#product-grid-{{ section.id }}');
+var root = document.querySelector('.quick-view-block');
 
 // Loop through each product box
 root.querySelectorAll('.ny-box').forEach(productBox => {

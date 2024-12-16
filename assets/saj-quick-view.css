@@ -15,7 +15,8 @@
     display: grid;
     row-gap: 19px;
     column-gap: 19px;
-    grid-template-columns: 433px 433px 433px}
+    grid-template-columns: 433px 433px 433px;
+}
 
 /* Popup Box CSS*/ 
 
@@ -145,9 +146,7 @@ text-decoration: none;
 transition: box-shadow var(--duration-short) ease;
 border: 1px solid #000;
 }
-.ny-field-Color .main-product-option-radio label:hover{
-  border-width: 1px !important;
-}
+
 .ny-field-Color .main-product-option-radio :not(input:checked ) + label{
   color: black;
   background: #fff;
