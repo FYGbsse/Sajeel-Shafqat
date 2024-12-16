@@ -14,36 +14,6 @@ saj-quick-view.js
 
 {% endcomment %}
 
-{{ 'saj-quick-view.css' | asset_url | stylesheet_tag }}
-
-<style>
-.ny-pointer-1{
-  top: {{ section.settings.vertical_pos_1 | append: '%' }};
-  left: {{ section.settings.horizontal_pos_1 | append: '%' }};
-}
-.ny-pointer-2{
-  top: {{ section.settings.vertical_pos_2 | append: '%' }};
-  left: {{ section.settings.horizontal_pos_2 | append: '%' }};
-}
-.ny-pointer-3{
-  top: {{ section.settings.vertical_pos_3 | append: '%' }};
-  left: {{ section.settings.horizontal_pos_3 | append: '%' }};
-}
-.ny-pointer-4{
-  top: {{ section.settings.vertical_pos_4 | append: '%' }};
-  left: {{ section.settings.horizontal_pos_4 | append: '%' }};
-}
-.ny-pointer-5{
-  top: {{ section.settings.vertical_pos_5 | append: '%' }};
-  left: {{ section.settings.horizontal_pos_5 | append: '%' }};
-}
-.ny-pointer-6{
-  top: {{ section.settings.vertical_pos_6 | append: '%' }};
-  left: {{ section.settings.horizontal_pos_6 | append: '%' }};
-}
-</style>
-
-
 <div class="quick-view-block" id="product-grid-{{ section.id }}">
   <div class="ny-container">
     <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
@@ -132,6 +102,35 @@ saj-quick-view.js
   </div>
 </div>
 
+
+{{ 'saj-quick-view.css' | asset_url | stylesheet_tag }}
+
+<style>
+.ny-pointer-1{
+  top: {{ section.settings.vertical_pos_1 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_1 | append: '%' }};
+}
+.ny-pointer-2{
+  top: {{ section.settings.vertical_pos_2 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_2 | append: '%' }};
+}
+.ny-pointer-3{
+  top: {{ section.settings.vertical_pos_3 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_3 | append: '%' }};
+}
+.ny-pointer-4{
+  top: {{ section.settings.vertical_pos_4 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_4 | append: '%' }};
+}
+.ny-pointer-5{
+  top: {{ section.settings.vertical_pos_5 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_5 | append: '%' }};
+}
+.ny-pointer-6{
+  top: {{ section.settings.vertical_pos_6 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_6 | append: '%' }};
+}
+</style>
 <script src="{{ 'saj-quick-view.js' | asset_url }}" defer="defer"></script> 
 {% schema %}
 {
