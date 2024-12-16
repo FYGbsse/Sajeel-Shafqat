@@ -91,7 +91,7 @@ saj-quick-view.js
                   {% endif %}
                   <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <input type="hidden" name="quantity" min="1" value="1">
-                  <input id="ny-submit" type="submit" value="ADD TO CART">
+                  <input id="ny-submit" type="submit" value="ADD TO CART" >
                 {% endform %}
               </div>
           </div>
@@ -106,6 +106,9 @@ saj-quick-view.js
 {{ 'saj-quick-view.css' | asset_url | stylesheet_tag }}
 
 <style>
+  #ny-submit{
+    background: url('{{ "arrow-pointer.png" | asset_img_url }}') no-repeat 88% center;
+}
 .ny-pointer-1{
   top: {{ section.settings.vertical_pos_1 | append: '%' }};
   left: {{ section.settings.horizontal_pos_1 | append: '%' }};

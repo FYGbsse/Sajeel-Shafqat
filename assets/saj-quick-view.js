@@ -91,7 +91,6 @@ addToCartForms.forEach((form) => {
     form.addEventListener("submit", async (event) => {
     // Prevent normal submission
     event.preventDefault();
-    console.log(form)
     // Submit form with ajax
     await fetch("/cart/add", {
         method: "post",
@@ -100,19 +99,19 @@ addToCartForms.forEach((form) => {
 
     // Get new cart object
     const res = await fetch("/cart.json");
-    console.log(res)
     const cart = await res.json();
 
     // Update cart count
     document.querySelectorAll(".cart-count-bubble span").forEach((el) => {
         el.textContent = cart.item_count;
     });
-
+    document.querySelector("#ny-submit").textContent = "ADDED";
+    document.querySelector("#ny-submit").style.backgroundImage = "unset";
     // Display message
-    const message = document.createElement("p");
+    /*const message = document.createElement("p");
     message.classList.add("added-to-cart");
     message.textContent = "Added to cart!";
-    form.appendChild(message);
+    form.appendChild(message);*/
     });
 });
 

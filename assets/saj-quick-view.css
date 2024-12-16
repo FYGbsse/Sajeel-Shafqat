@@ -99,7 +99,6 @@
     text-decoration-skip-ink: none;
     color: #fff;
     height: 45px;
-    background: url('{{ "arrow-pointer.png" | asset_img_url }}') no-repeat 88% center;
     border: none;
     cursor: pointer;
     background-color: #000;
@@ -200,11 +199,12 @@ border: 1px solid #000;
     align-items: center;
 }
 .ny-size-wrapper {
-  display: none;
-  height: 99px;
-  overflow: overlay;
-  border: 1px solid;
+    display: none;
+    height: 99px;
+    overflow: overlay;
+    border: 1px solid;
     border-top: none;
+    scrollbar-width: none;
 }
 .ny-placeholder{
   font-family: Jost;
@@ -311,30 +311,4 @@ input[type="radio"] {
   src: url(https://fonts.gstatic.com/s/lustria/v13/9oRONYodvDEyjuhOnC8zMw.woff2) format('woff2');
 }
 
-
-/* For WebKit-based browsers (Chrome, Edge, Safari) */
-.ny-size-wrapper::-webkit-scrollbar {
-width: 6px; /* Set the width of the scrollbar */
-height: 6px; /* For horizontal scrollbar */
-}
-
-.ny-size-wrapper::-webkit-scrollbar-thumb {
-background: #888; /* Color of the scrollbar thumb */
-border-radius: 10px; /* Make the scrollbar rounded */
-}
-
-.ny-size-wrapper::-webkit-scrollbar-thumb:hover {
-background: #555; /* Color when hovered */
-}
-
-.ny-size-wrapper::-webkit-scrollbar-track {
-background: #f1f1f1; /* Background of the scrollbar track */
-border-radius: 10px; /* Make the track rounded */
-}
-
-/* For Firefox */
-.ny-size-wrapper {
-scrollbar-width: thin; /* Thin scrollbar */
-scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
-}
   
