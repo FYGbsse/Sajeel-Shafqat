@@ -1,0 +1,315 @@
+{% comment %}
+Date: 16-12-2024  
+Developer:  Sajeel Shafqat
+
+Task:
+-The grid of six blocks, each for one product, and the products should be selectable from the customizer.
+-The Popup  show the name, price, description, and variants of the product, also the “ADD TO CART” button and
+ add the product to the cart Variants info rendered dynamically from the product information. Different images for variants
+ and the product image changed when selecting a variant.
+
+Files:
+saj-quick-view.css
+saj-quick-view.js
+
+{% endcomment %}
+
+<div class="quick-view-block" id="product-grid-{{ section.id }}">
+  <div class="ny-container">
+    <h2 class="ny-title">{{ section.settings.ny_title }}</h2>
+    <div class="ny-product-grid">
+      {% for product in section.settings.ny_product_list %} 
+        
+        {% comment  %}
+            - Image Box that show grid image
+            - Attribute data-product is added to validate the variable id
+        {% endcomment %}
+        <div class="ny-box" id="product-{{ product.id }}" data-product='{{ product | json }}' style="background-image: url('{{ product.featured_image | img_url: 'master' }}')">
+          
+          {% comment  %}
+            - Product Point that can be moved anywhere on product image.
+            - When Product Pointer is clicked then opens Popup
+          {% endcomment %}
+         <span class="ny-pointer-{{forloop.index}} pointer"
+          style="position:relative;"><img src="{{ 'pointer.png' |  asset_img_url: 'master' }}" width="22px" height="22px"></span>
+         
+          {% comment  %}
+            - Class ny-selection-box is Popup Block that is Hidden by Default.
+            - When Product Pointer is clicked then this Popup appear
+          {% endcomment %}
+          <div class="ny-selection-box">
+            <div class="ny-close" style="text-align: right;"><img src="{{ 'close.png' |  asset_img_url: 'master' }}" width="12px" height="12px"></div>
+            <div class="ny-popup-grid">
+              <div class="ny-popup-top">
+                <div class="ny-popup-image">
+                   <img src="{{ product.featured_image | img_url: 'master' }}" width="120px" height="140px">
+                </div>
+                <div class="ny-popup-content">
+                   <h2>{{ product.title |  strip_html }}</h2>
+                    <p class="price">{{product.price | money_with_currency }}</p>
+                    <p class="desc">{{product.description |  strip_html }}</p>
+                </div>
+              </div>
+
+               {% comment  %}
+              - Product form that has Option size and color with other hidden inputs
+                like quantity, varient id
+              {% endcomment %}
+              <div class="ny-popup-form">
+                {% form 'product', product %}   
+                  {% if product.variants.size > 1 %}
+                    <div class="main-product-options">
+                      {% for option in product.options_with_values %}
+                        <div class="main-product-option">
+                          <div class="ny-option">{{ option.name }}</div>
+                            {% if option.name == 'Size' %}
+                              <div class="ny-accordion-toggle" id="size-toggle">
+                               <span class="ny-placeholder">Choose your size</span>
+                               <span class="ny-accordion-icon"><img src="{{ 'arrow.png' |  asset_img_url: 'master' }}" width="12px" height="6px"></span>
+                              </div>
+                            {% endif %}
+                            <div class="ny-field-{{ option.name }} main-product-option-radios {% if option.name == 'Size' %}ny-size-wrapper{% endif %}">
+                              {% for value in option.values %}
+                                <div {% if option.name == 'Color' %}style="background-color:{{ value }}"{% endif %} class="main-product-option-radio">
+                                  <input
+                                  {% if option.selected_value == value %}checked{% endif %}
+                                  type="radio"
+                                  name="{{ option.name }}"
+                                  value="{{ value }}"
+                                  class="product-option-select"
+                                  id="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}"
+                                  >
+                                  <label class="ny-button" for="{{ product.id }}-{{ option.name | handlize }}-{{ value | handlize }}">
+                                  {{ value }}
+                                  </label>
+                                </div>
+                              {% endfor %}
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  <input class="main-product-id hide" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <input type="hidden" name="quantity" min="1" value="1">
+                  <input id="ny-submit" type="submit" value="ADD TO CART" >
+                {% endform %}
+              </div>
+          </div>
+          </div>
+        </div>
+      {% endfor %}    
+    </div>
+  </div>
+</div>
+
+
+{{ 'saj-quick-view.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #ny-submit{
+    background: url('{{ "arrow-pointer.png" | asset_img_url }}') no-repeat 88% center;
+    border: none;
+    cursor: pointer;
+    background-color: #000;
+}
+.ny-pointer-1{
+  top: {{ section.settings.vertical_pos_1 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_1 | append: '%' }};
+}
+.ny-pointer-2{
+  top: {{ section.settings.vertical_pos_2 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_2 | append: '%' }};
+}
+.ny-pointer-3{
+  top: {{ section.settings.vertical_pos_3 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_3 | append: '%' }};
+}
+.ny-pointer-4{
+  top: {{ section.settings.vertical_pos_4 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_4 | append: '%' }};
+}
+.ny-pointer-5{
+  top: {{ section.settings.vertical_pos_5 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_5 | append: '%' }};
+}
+.ny-pointer-6{
+  top: {{ section.settings.vertical_pos_6 | append: '%' }};
+  left: {{ section.settings.horizontal_pos_6 | append: '%' }};
+}
+</style>
+<script src="{{ 'saj-quick-view.js' | asset_url }}" defer="defer"></script> 
+{% schema %}
+{
+  "name": "NY Product Grid",
+  "tag": "section",
+  "class": "section section-featured-product ny-container-wapper",
+  "settings": [
+    {
+    "type": "text",
+    "id": "ny_title",
+    "label": "Heading",
+    "default": "Tisso vison in the wild"
+    },
+    {
+      "type": "header",
+      "content": "Select the 6 products",
+      "info": "These products will appear in the grid"
+    },
+    {
+    "type": "product_list",
+    "id": "ny_product_list",
+    "label": "Products",
+    "limit": 6
+    },
+    {
+        "type" : "header",
+        "content" : "Product 1 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_1",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_1",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 2 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_2",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_2",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 3 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_3",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_3",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 4 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_4",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_4",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 5 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_5",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_5",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type" : "header",
+        "content" : "Product 6 Pointer Postion"
+    },
+    {
+        "type": "range",
+        "id": "horizontal_pos_6",
+        "label": "Dot Horizontal Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "vertical_pos_6",
+        "label": "Dot Vertical Position (%)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "NY Product Grid"
+    }
+  ]
+}
+{% endschema %}

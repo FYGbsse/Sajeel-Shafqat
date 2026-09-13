@@ -1,0 +1,55 @@
+<div class="{{}}">
+    <div class="ny-container">
+      <img class="ny-logo" src="{{ section.settings.ny_logo.src }}" width="115px" height="19px"/>
+      <p class="ny-title">{{ section.settings.ny_tagline }}</p>
+      <div class="ny-button">
+        <a href="{{section.settings.ny_button_link}}" >{{section.settings.ny_button_label}}</a>
+      </div>
+    </div>
+</div>
+<style>
+.ny-container{display: flex;align-items: center;justify-content: space-between;}
+.ny-title{}
+.ny-logo{}
+.ny-box{}
+.ny-ny-button{}
+</style>    
+
+
+{% schema %}
+{
+  "name": "NY Header",
+  "tag": "section",
+  "class": "section section-top-header ny-container",
+  "settings": [
+    {
+    "type": "image_picker",
+    "id": "ny_logo",
+    "label": "Add Logo"
+    },
+    {
+    "type": "text",
+    "id": "ny_tagline",
+    "label": "Tagline",
+    "default": "Find the ideal gift for your loved ones."
+    },
+    {
+    "type": "text",
+    "id": "ny_button_label",
+    "default": "t:sections.image-with-text.blocks.button.settings.button_label.default",
+    "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
+    "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
+    },
+    {
+    "type": "url",
+    "id": "ny_button_link",
+    "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NY Header"
+    }
+  ]
+}
+{% endschema %}
